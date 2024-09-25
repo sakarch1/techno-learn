@@ -27,16 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (password_verify($password, $hashed_password)) {
             $_SESSION['user_id'] = $id; 
-            header("Location: home.html"); 
+            header("Location: ../home.html"); 
             exit();
         } else {
             $_SESSION['error'] = "Invalid email or password.";
-            header("Location: login.html");
+            header("Location: ../login.html");
             exit();
         }
     } else {
         $_SESSION['error'] = "No account found with that email.";
-        header("Location: login.html");
+        header("Location: ../login.html");
         exit();
     }
 }

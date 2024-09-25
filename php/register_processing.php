@@ -11,19 +11,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
         $_SESSION['error'] = "Please fill in all fields.";
-        header("Location: register.html");
+        header("Location: ../register.html");
         exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = "Invalid email format.";
-        header("Location: register.html");
+        header("Location: ../register.html");
         exit();
     }
 
     if ($password !== $confirm_password) {
         $_SESSION['error'] = "Passwords do not match.";
-        header("Location: register.html");
+        header("Location: ../register.html");
         exit();
     }
 
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->num_rows > 0) {
         $_SESSION['error'] = "An account with this email already exists.";
-        header("Location: register.html");
+        header("Location: ../register.html");
         exit();
     }
 
@@ -48,11 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         $_SESSION['success'] = "Registration successful. You can now log in.";
-        header("Location: login.html");
+        header("Location: ../login.html");
         exit();
     } else {
         $_SESSION['error'] = "Something went wrong. Please try again.";
-        header("Location: register.html");
+        header("Location: ../register.html");
         exit();
     }
 
